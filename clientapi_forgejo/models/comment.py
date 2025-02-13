@@ -16,6 +16,14 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from datetime import date, datetime
+
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    raise TypeError ("Type %s not serializable" % type(obj))
 
 from datetime import datetime
 from typing import List, Optional
@@ -51,7 +59,7 @@ class Comment(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(self.to_dict(),default=json_serial)
 
     @classmethod
     def from_json(cls, json_str: str) -> Comment:

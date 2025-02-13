@@ -50,11 +50,13 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     tickets = []
     while results>0:
         api_response = api_instance.issue_list_issues(owner, repo,  page=page, limit=limit)
+        results = len(api_response)
         if api_response:
             for issue in api_response:
                 comments = []            
                 parent = issue.to_json()
                 clean_data = json.loads(parent)
+                #print("debug",issue.number)
                 detail_api_response = api_instance.issue_get_comments(owner, repo, index=issue.number,
                                                                       #page=detail_page,
                                                                       #limit=limit
@@ -64,5 +66,5 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
                     comments.append(data)
             clean_data['details'] = comments
             print(json.dumps(clean_data,default=json_serial,sort_keys=True))                            
-        page = page + 1
+            page = page + 1
 

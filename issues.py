@@ -39,32 +39,32 @@ def json_serial(obj):
     raise TypeError ("Type %s not serializable" % type(obj))
 
 # Enter a context with an instance of the API client
-with clientapi_forgejo.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = clientapi_forgejo.IssueApi(api_client)
-    owner = 'introspector' # str | owner of the repo
-    repo = 'SOLFUNMEME' # str | name of the repo
-    limit = 100 # int | page size of results (optional)
-    page = 0
-    results = 1
-    tickets = []
-    while results>0:
-        api_response = api_instance.issue_list_issues(owner, repo,  page=page, limit=limit)
-        results = len(api_response)
-        if api_response:
-            for issue in api_response:
-                comments = []            
-                parent = issue.to_json()
-                clean_data = json.loads(parent)
-                #print("debug",issue.number)
-                detail_api_response = api_instance.issue_get_comments(owner, repo, index=issue.number,
-                                                                      #page=detail_page,
-                                                                      #limit=limit
-                                                                      )
-                for c in detail_api_response:
-                    data = json.loads(c.to_json())
-                    comments.append(data)
-            clean_data['details'] = comments
-            print(json.dumps(clean_data,default=json_serial,sort_keys=True))                            
-            page = page + 1
-
+with open("issues.json",'w') as wo:
+    with clientapi_forgejo.ApiClient(configuration) as api_client:
+        api_instance = clientapi_forgejo.IssueApi(api_client)
+        owner = 'introspector' # str | owner of the repo
+        repo = 'SOLFUNMEME' # str | name of the repo
+        limit = 100 # int | page size of results (optional)
+        page = 0
+        results = 1
+        tickets = []
+        while results>0:
+            api_response = api_instance.issue_list_issues(owner, repo,  page=page, limit=limit)
+            results = len(api_response)
+            if results > 0:
+                print("results",results)
+                for issue in api_response:
+                    comments = []            
+                    parent = issue.to_json()
+                    clean_data = json.loads(parent)
+                    print("debug",issue.number)
+                    detail_api_response = api_instance.issue_get_comments(owner, repo, index=issue.number,
+                                                                          #page=detail_page,
+                                                                          #limit=limit
+                                                                          )
+                    for c in detail_api_response:
+                        data = json.loads(c.to_json())
+                        comments.append(data)
+                    clean_data['details'] = comments
+                    wo.write(json.dumps(clean_data,default=json_serial,sort_keys=True))                            
+                page = page + 1

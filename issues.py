@@ -39,11 +39,14 @@ def json_serial(obj):
     raise TypeError ("Type %s not serializable" % type(obj))
 
 # Enter a context with an instance of the API client
-with open("issues.json",'w') as wo:
+
+owner = 'introspector' # str | owner of the repo
+repos = ['meta-meme','SOLFUNMEME'] # str | name of the repo
+
+for repo in repos:
+  with open(repo + "issues.json",'w') as wo:
     with clientapi_forgejo.ApiClient(configuration) as api_client:
         api_instance = clientapi_forgejo.IssueApi(api_client)
-        owner = 'introspector' # str | owner of the repo
-        repo = 'SOLFUNMEME' # str | name of the repo
         limit = 100 # int | page size of results (optional)
         page = 0
         results = 1

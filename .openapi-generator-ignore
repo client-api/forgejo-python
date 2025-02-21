@@ -23,3 +23,5 @@
 #!docs/README.md
 
 .github/
+.gitignore
+clientapi_forgejo/forgejo.py

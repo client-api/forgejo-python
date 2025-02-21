@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 # import apis into sdk package
 from clientapi_forgejo.api.activitypub_api import ActivitypubApi

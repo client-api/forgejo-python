@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "clientapi_forgejo"
-version = "1.1.0"
+version = "1.1.1"
 description = "Forgejo API"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "This file is distributed under the MIT license for the purpose of interoperability"

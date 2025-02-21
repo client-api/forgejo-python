@@ -3,6 +3,7 @@
 PayloadCommit represents a commit
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **added** | **List[str]** |  | [optional] 
@@ -26,12 +27,12 @@ json = "{}"
 # create an instance of PayloadCommit from a JSON string
 payload_commit_instance = PayloadCommit.from_json(json)
 # print the JSON string representation of the object
-print PayloadCommit.to_json()
+print(PayloadCommit.to_json())
 
 # convert the object into a dict
 payload_commit_dict = payload_commit_instance.to_dict()
 # create an instance of PayloadCommit from a dict
-payload_commit_form_dict = payload_commit.from_dict(payload_commit_dict)
+payload_commit_from_dict = PayloadCommit.from_dict(payload_commit_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

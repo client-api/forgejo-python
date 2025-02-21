@@ -24,9 +24,8 @@ Delete a package
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -104,6 +103,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the package | 
@@ -122,13 +122,14 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -146,9 +147,8 @@ Gets a package
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.package import Package
 from clientapi_forgejo.rest import ApiException
@@ -229,6 +229,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the package | 
@@ -250,10 +251,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Package |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -271,9 +273,8 @@ Gets all files of a package
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.package_file import PackageFile
 from clientapi_forgejo.rest import ApiException
@@ -354,6 +355,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the package | 
@@ -375,10 +377,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | PackageFileList |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -396,9 +399,8 @@ Gets all packages of an owner
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.package import Package
 from clientapi_forgejo.rest import ApiException
@@ -480,6 +482,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the packages | 
@@ -502,9 +505,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | PackageList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

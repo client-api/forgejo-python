@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | **str** |  | [optional] 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of OAuth2Application from a JSON string
 o_auth2_application_instance = OAuth2Application.from_json(json)
 # print the JSON string representation of the object
-print OAuth2Application.to_json()
+print(OAuth2Application.to_json())
 
 # convert the object into a dict
 o_auth2_application_dict = o_auth2_application_instance.to_dict()
 # create an instance of OAuth2Application from a dict
-o_auth2_application_form_dict = o_auth2_application.from_dict(o_auth2_application_dict)
+o_auth2_application_from_dict = OAuth2Application.from_dict(o_auth2_application_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,8 +3,10 @@
 EditBranchProtectionOption options for editing a branch protection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**apply_to_admins** | **bool** |  | [optional] 
 **approvals_whitelist_teams** | **List[str]** |  | [optional] 
 **approvals_whitelist_username** | **List[str]** |  | [optional] 
 **block_on_official_review_requests** | **bool** |  | [optional] 
@@ -16,6 +18,7 @@ Name | Type | Description | Notes
 **enable_push** | **bool** |  | [optional] 
 **enable_push_whitelist** | **bool** |  | [optional] 
 **enable_status_check** | **bool** |  | [optional] 
+**ignore_stale_approvals** | **bool** |  | [optional] 
 **merge_whitelist_teams** | **List[str]** |  | [optional] 
 **merge_whitelist_usernames** | **List[str]** |  | [optional] 
 **protected_file_patterns** | **str** |  | [optional] 
@@ -37,12 +40,12 @@ json = "{}"
 # create an instance of EditBranchProtectionOption from a JSON string
 edit_branch_protection_option_instance = EditBranchProtectionOption.from_json(json)
 # print the JSON string representation of the object
-print EditBranchProtectionOption.to_json()
+print(EditBranchProtectionOption.to_json())
 
 # convert the object into a dict
 edit_branch_protection_option_dict = edit_branch_protection_option_instance.to_dict()
 # create an instance of EditBranchProtectionOption from a dict
-edit_branch_protection_option_form_dict = edit_branch_protection_option.from_dict(edit_branch_protection_option_dict)
+edit_branch_protection_option_from_dict = EditBranchProtectionOption.from_dict(edit_branch_protection_option_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

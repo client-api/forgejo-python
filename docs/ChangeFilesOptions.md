@@ -3,6 +3,7 @@
 ChangeFilesOptions options for creating, updating or deleting multiple files Note: `author` and `committer` are optional (if only one is given, it will be used for the other, otherwise the authenticated user will be used)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | [**Identity**](Identity.md) |  | [optional] 
@@ -24,12 +25,12 @@ json = "{}"
 # create an instance of ChangeFilesOptions from a JSON string
 change_files_options_instance = ChangeFilesOptions.from_json(json)
 # print the JSON string representation of the object
-print ChangeFilesOptions.to_json()
+print(ChangeFilesOptions.to_json())
 
 # convert the object into a dict
 change_files_options_dict = change_files_options_instance.to_dict()
 # create an instance of ChangeFilesOptions from a dict
-change_files_options_form_dict = change_files_options.from_dict(change_files_options_dict)
+change_files_options_from_dict = ChangeFilesOptions.from_dict(change_files_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

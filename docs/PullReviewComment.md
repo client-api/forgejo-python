@@ -3,6 +3,7 @@
 PullReviewComment represents a comment on a pull request review
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | **str** |  | [optional] 
@@ -31,12 +32,12 @@ json = "{}"
 # create an instance of PullReviewComment from a JSON string
 pull_review_comment_instance = PullReviewComment.from_json(json)
 # print the JSON string representation of the object
-print PullReviewComment.to_json()
+print(PullReviewComment.to_json())
 
 # convert the object into a dict
 pull_review_comment_dict = pull_review_comment_instance.to_dict()
 # create an instance of PullReviewComment from a dict
-pull_review_comment_form_dict = pull_review_comment.from_dict(pull_review_comment_dict)
+pull_review_comment_from_dict = PullReviewComment.from_dict(pull_review_comment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

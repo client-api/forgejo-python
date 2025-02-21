@@ -3,8 +3,10 @@
 Repository represents a repository
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**allow_fast_forward_only_merge** | **bool** |  | [optional] 
 **allow_merge_commits** | **bool** |  | [optional] 
 **allow_rebase** | **bool** |  | [optional] 
 **allow_rebase_explicit** | **bool** |  | [optional] 
@@ -19,6 +21,7 @@ Name | Type | Description | Notes
 **default_branch** | **str** |  | [optional] 
 **default_delete_branch_after_merge** | **bool** |  | [optional] 
 **default_merge_style** | **str** |  | [optional] 
+**default_update_style** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **empty** | **bool** |  | [optional] 
 **external_tracker** | [**ExternalTracker**](ExternalTracker.md) |  | [optional] 
@@ -26,6 +29,7 @@ Name | Type | Description | Notes
 **fork** | **bool** |  | [optional] 
 **forks_count** | **int** |  | [optional] 
 **full_name** | **str** |  | [optional] 
+**globally_editable_wiki** | **bool** |  | [optional] 
 **has_actions** | **bool** |  | [optional] 
 **has_issues** | **bool** |  | [optional] 
 **has_packages** | **bool** |  | [optional] 
@@ -45,6 +49,7 @@ Name | Type | Description | Notes
 **mirror_interval** | **str** |  | [optional] 
 **mirror_updated** | **datetime** |  | [optional] 
 **name** | **str** |  | [optional] 
+**object_format_name** | **str** | ObjectFormatName of the underlying git repository | [optional] 
 **open_issues_count** | **int** |  | [optional] 
 **open_pr_counter** | **int** |  | [optional] 
 **original_url** | **str** |  | [optional] 
@@ -58,10 +63,12 @@ Name | Type | Description | Notes
 **ssh_url** | **str** |  | [optional] 
 **stars_count** | **int** |  | [optional] 
 **template** | **bool** |  | [optional] 
+**topics** | **List[str]** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **url** | **str** |  | [optional] 
 **watchers_count** | **int** |  | [optional] 
 **website** | **str** |  | [optional] 
+**wiki_branch** | **str** |  | [optional] 
 
 ## Example
 
@@ -73,12 +80,12 @@ json = "{}"
 # create an instance of Repository from a JSON string
 repository_instance = Repository.from_json(json)
 # print the JSON string representation of the object
-print Repository.to_json()
+print(Repository.to_json())
 
 # convert the object into a dict
 repository_dict = repository_instance.to_dict()
 # create an instance of Repository from a dict
-repository_form_dict = repository.from_dict(repository_dict)
+repository_from_dict = Repository.from_dict(repository_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

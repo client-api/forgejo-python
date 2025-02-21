@@ -3,6 +3,7 @@
 PayloadUser represents the author or committer of a commit
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of PayloadUser from a JSON string
 payload_user_instance = PayloadUser.from_json(json)
 # print the JSON string representation of the object
-print PayloadUser.to_json()
+print(PayloadUser.to_json())
 
 # convert the object into a dict
 payload_user_dict = payload_user_instance.to_dict()
 # create an instance of PayloadUser from a dict
-payload_user_form_dict = payload_user.from_dict(payload_user_dict)
+payload_user_from_dict = PayloadUser.from_dict(payload_user_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

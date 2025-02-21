@@ -32,9 +32,8 @@ Returns information about a gitignore template
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.gitignore_template_info import GitignoreTemplateInfo
 from clientapi_forgejo.rest import ApiException
@@ -112,6 +111,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| name of the template | 
@@ -130,10 +130,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GitignoreTemplateInfo |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -151,9 +152,8 @@ Returns all labels in a template
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.label_template import LabelTemplate
 from clientapi_forgejo.rest import ApiException
@@ -231,6 +231,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| name of the template | 
@@ -249,10 +250,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LabelTemplateInfo |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -270,9 +272,8 @@ Returns information about a license template
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.license_template_info import LicenseTemplateInfo
 from clientapi_forgejo.rest import ApiException
@@ -350,6 +351,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| name of the license | 
@@ -368,10 +370,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LicenseTemplateInfo |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -389,9 +392,8 @@ Returns the nodeinfo of the Gitea application
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.node_info import NodeInfo
 from clientapi_forgejo.rest import ApiException
@@ -467,6 +469,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -483,6 +486,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | NodeInfo |  -  |
@@ -503,9 +507,8 @@ Get default signing-key.gpg
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -580,6 +583,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -596,6 +600,7 @@ This endpoint does not need any parameter.
  - **Accept**: text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GPG armored public key |  -  |
@@ -616,9 +621,8 @@ Returns the version of the Gitea application
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.server_version import ServerVersion
 from clientapi_forgejo.rest import ApiException
@@ -694,6 +698,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -710,6 +715,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ServerVersion |  -  |
@@ -730,9 +736,8 @@ Returns a list of all gitignore templates
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -807,6 +812,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -823,6 +829,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GitignoreTemplateList |  -  |
@@ -843,9 +850,8 @@ Returns a list of all label templates
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -920,6 +926,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -936,6 +943,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LabelTemplateList |  -  |
@@ -956,9 +964,8 @@ Returns a list of all license templates
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.licenses_template_list_entry import LicensesTemplateListEntry
 from clientapi_forgejo.rest import ApiException
@@ -1034,6 +1041,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1050,6 +1058,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LicenseTemplateList |  -  |
@@ -1070,9 +1079,8 @@ Render a markdown document as HTML
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.markdown_option import MarkdownOption
 from clientapi_forgejo.rest import ApiException
@@ -1150,6 +1158,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MarkdownOption**](MarkdownOption.md)|  | [optional] 
@@ -1168,10 +1177,11 @@ Name | Type | Description  | Notes
  - **Accept**: text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | MarkdownRender is a rendered markdown document |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1189,9 +1199,8 @@ Render raw markdown as HTML
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1268,6 +1277,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **str**| Request body to render | 
@@ -1286,10 +1296,11 @@ Name | Type | Description  | Notes
  - **Accept**: text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | MarkdownRender is a rendered markdown document |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1307,9 +1318,8 @@ Render a markup document as HTML
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.markup_option import MarkupOption
 from clientapi_forgejo.rest import ApiException
@@ -1387,6 +1397,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MarkupOption**](MarkupOption.md)|  | [optional] 
@@ -1405,10 +1416,11 @@ Name | Type | Description  | Notes
  - **Accept**: text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | MarkupRender is a rendered markup document |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

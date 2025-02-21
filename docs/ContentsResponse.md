@@ -3,6 +3,7 @@
 ContentsResponse contains information about a repo's entry's (dir, file, symlink, submodule) metadata and content
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **links** | [**FileLinksResponse**](FileLinksResponse.md) |  | [optional] 
@@ -31,12 +32,12 @@ json = "{}"
 # create an instance of ContentsResponse from a JSON string
 contents_response_instance = ContentsResponse.from_json(json)
 # print the JSON string representation of the object
-print ContentsResponse.to_json()
+print(ContentsResponse.to_json())
 
 # convert the object into a dict
 contents_response_dict = contents_response_instance.to_dict()
 # create an instance of ContentsResponse from a dict
-contents_response_form_dict = contents_response.from_dict(contents_response_dict)
+contents_response_from_dict = ContentsResponse.from_dict(contents_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

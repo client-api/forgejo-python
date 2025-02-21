@@ -3,6 +3,7 @@
 TimelineComment represents a timeline comment (comment of any type) on a commit or issue
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **assignee** | [**User**](User.md) |  | [optional] 
@@ -45,12 +46,12 @@ json = "{}"
 # create an instance of TimelineComment from a JSON string
 timeline_comment_instance = TimelineComment.from_json(json)
 # print the JSON string representation of the object
-print TimelineComment.to_json()
+print(TimelineComment.to_json())
 
 # convert the object into a dict
 timeline_comment_dict = timeline_comment_instance.to_dict()
 # create an instance of TimelineComment from a dict
-timeline_comment_form_dict = timeline_comment.from_dict(timeline_comment_dict)
+timeline_comment_from_dict = TimelineComment.from_dict(timeline_comment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

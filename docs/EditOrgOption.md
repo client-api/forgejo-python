@@ -3,9 +3,11 @@
 EditOrgOption options for editing an organization
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** |  | [optional] 
+**email** | **str** |  | [optional] 
 **full_name** | **str** |  | [optional] 
 **location** | **str** |  | [optional] 
 **repo_admin_change_team_access** | **bool** |  | [optional] 
@@ -22,12 +24,12 @@ json = "{}"
 # create an instance of EditOrgOption from a JSON string
 edit_org_option_instance = EditOrgOption.from_json(json)
 # print the JSON string representation of the object
-print EditOrgOption.to_json()
+print(EditOrgOption.to_json())
 
 # convert the object into a dict
 edit_org_option_dict = edit_org_option_instance.to_dict()
 # create an instance of EditOrgOption from a dict
-edit_org_option_form_dict = edit_org_option.from_dict(edit_org_option_dict)
+edit_org_option_from_dict = EditOrgOption.from_dict(edit_org_option_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

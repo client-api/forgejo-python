@@ -3,6 +3,7 @@
 PullReview represents a pull request review
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | **str** |  | [optional] 
@@ -30,12 +31,12 @@ json = "{}"
 # create an instance of PullReview from a JSON string
 pull_review_instance = PullReview.from_json(json)
 # print the JSON string representation of the object
-print PullReview.to_json()
+print(PullReview.to_json())
 
 # convert the object into a dict
 pull_review_dict = pull_review_instance.to_dict()
 # create an instance of PullReview from a dict
-pull_review_form_dict = pull_review.from_dict(pull_review_dict)
+pull_review_from_dict = PullReview.from_dict(pull_review_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

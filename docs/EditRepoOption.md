@@ -3,8 +3,10 @@
 EditRepoOption options when editing a repository's properties
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**allow_fast_forward_only_merge** | **bool** | either &#x60;true&#x60; to allow fast-forward-only merging pull requests, or &#x60;false&#x60; to prevent fast-forward-only merging. | [optional] 
 **allow_manual_merge** | **bool** | either &#x60;true&#x60; to allow mark pr as merged manually, or &#x60;false&#x60; to prevent it. | [optional] 
 **allow_merge_commits** | **bool** | either &#x60;true&#x60; to allow merging pull requests with a merge commit, or &#x60;false&#x60; to prevent merging pull requests with merge commits. | [optional] 
 **allow_rebase** | **bool** | either &#x60;true&#x60; to allow rebase-merging pull requests, or &#x60;false&#x60; to prevent rebase-merging. | [optional] 
@@ -16,11 +18,13 @@ Name | Type | Description | Notes
 **default_allow_maintainer_edit** | **bool** | set to &#x60;true&#x60; to allow edits from maintainers by default | [optional] 
 **default_branch** | **str** | sets the default branch for this repository. | [optional] 
 **default_delete_branch_after_merge** | **bool** | set to &#x60;true&#x60; to delete pr branch after merge by default | [optional] 
-**default_merge_style** | **str** | set to a merge style to be used by this repository: \&quot;merge\&quot;, \&quot;rebase\&quot;, \&quot;rebase-merge\&quot;, or \&quot;squash\&quot;. | [optional] 
+**default_merge_style** | **str** | set to a merge style to be used by this repository: \&quot;merge\&quot;, \&quot;rebase\&quot;, \&quot;rebase-merge\&quot;, \&quot;squash\&quot;, or \&quot;fast-forward-only\&quot;. | [optional] 
+**default_update_style** | **str** | set to a update style to be used by this repository: \&quot;rebase\&quot; or \&quot;merge\&quot; | [optional] 
 **description** | **str** | a short description of the repository. | [optional] 
-**enable_prune** | **bool** | enable prune - remove obsolete remote-tracking references | [optional] 
+**enable_prune** | **bool** | enable prune - remove obsolete remote-tracking references when mirroring | [optional] 
 **external_tracker** | [**ExternalTracker**](ExternalTracker.md) |  | [optional] 
 **external_wiki** | [**ExternalWiki**](ExternalWiki.md) |  | [optional] 
+**globally_editable_wiki** | **bool** | set the globally editable state of the wiki | [optional] 
 **has_actions** | **bool** | either &#x60;true&#x60; to enable actions unit, or &#x60;false&#x60; to disable them. | [optional] 
 **has_issues** | **bool** | either &#x60;true&#x60; to enable issues for this repository or &#x60;false&#x60; to disable them. | [optional] 
 **has_packages** | **bool** | either &#x60;true&#x60; to enable packages unit, or &#x60;false&#x60; to disable them. | [optional] 
@@ -35,6 +39,7 @@ Name | Type | Description | Notes
 **private** | **bool** | either &#x60;true&#x60; to make the repository private or &#x60;false&#x60; to make it public. Note: you will get a 422 error if the organization restricts changing repository visibility to organization owners and a non-owner tries to change the value of private. | [optional] 
 **template** | **bool** | either &#x60;true&#x60; to make this repository a template or &#x60;false&#x60; to make it a normal repository | [optional] 
 **website** | **str** | a URL with more information about the repository. | [optional] 
+**wiki_branch** | **str** | sets the branch used for this repository&#39;s wiki. | [optional] 
 
 ## Example
 
@@ -46,12 +51,12 @@ json = "{}"
 # create an instance of EditRepoOption from a JSON string
 edit_repo_option_instance = EditRepoOption.from_json(json)
 # print the JSON string representation of the object
-print EditRepoOption.to_json()
+print(EditRepoOption.to_json())
 
 # convert the object into a dict
 edit_repo_option_dict = edit_repo_option_instance.to_dict()
 # create an instance of EditRepoOption from a dict
-edit_repo_option_form_dict = edit_repo_option.from_dict(edit_repo_option_dict)
+edit_repo_option_from_dict = EditRepoOption.from_dict(edit_repo_option_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

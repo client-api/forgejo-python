@@ -27,9 +27,8 @@ List users's notification threads
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_thread import NotificationThread
 from clientapi_forgejo.rest import ApiException
@@ -113,6 +112,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **all** | **bool**| If true, show notifications marked as read. Default value is false | [optional] 
@@ -137,6 +137,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | NotificationThreadList |  -  |
@@ -157,9 +158,8 @@ List users's notification threads on a specific repo
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_thread import NotificationThread
 from clientapi_forgejo.rest import ApiException
@@ -245,6 +245,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -271,6 +272,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | NotificationThreadList |  -  |
@@ -291,9 +293,8 @@ Get notification thread by ID
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_thread import NotificationThread
 from clientapi_forgejo.rest import ApiException
@@ -371,6 +372,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| id of notification thread | 
@@ -389,11 +391,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | NotificationThread |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -411,9 +414,8 @@ Check if unread notifications exist
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_count import NotificationCount
 from clientapi_forgejo.rest import ApiException
@@ -489,6 +491,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -505,6 +508,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Number of unread notifications |  -  |
@@ -525,9 +529,8 @@ Mark notification threads as read, pinned or unread
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_thread import NotificationThread
 from clientapi_forgejo.rest import ApiException
@@ -608,6 +611,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **last_read_at** | **datetime**| Describes the last point that notifications were checked. Anything updated since this time will not be updated. | [optional] 
@@ -629,6 +633,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **205** | NotificationThreadList |  -  |
@@ -649,9 +654,8 @@ Mark notification threads as read, pinned or unread on a specific repo
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_thread import NotificationThread
 from clientapi_forgejo.rest import ApiException
@@ -734,6 +738,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -757,6 +762,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **205** | NotificationThreadList |  -  |
@@ -777,9 +783,8 @@ Mark notification thread as read by ID
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.notification_thread import NotificationThread
 from clientapi_forgejo.rest import ApiException
@@ -858,6 +863,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| id of notification thread | 
@@ -877,11 +883,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **205** | NotificationThread |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

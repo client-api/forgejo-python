@@ -3,6 +3,7 @@
 CreateWikiPageOptions form for creating wiki
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content_base64** | **str** | content must be base64 encoded | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of CreateWikiPageOptions from a JSON string
 create_wiki_page_options_instance = CreateWikiPageOptions.from_json(json)
 # print the JSON string representation of the object
-print CreateWikiPageOptions.to_json()
+print(CreateWikiPageOptions.to_json())
 
 # convert the object into a dict
 create_wiki_page_options_dict = create_wiki_page_options_instance.to_dict()
 # create an instance of CreateWikiPageOptions from a dict
-create_wiki_page_options_form_dict = create_wiki_page_options.from_dict(create_wiki_page_options_dict)
+create_wiki_page_options_from_dict = CreateWikiPageOptions.from_dict(create_wiki_page_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

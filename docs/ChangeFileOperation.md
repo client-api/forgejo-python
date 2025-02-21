@@ -3,6 +3,7 @@
 ChangeFileOperation for creating, updating or deleting a file
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **str** | new or updated file content, must be base64 encoded | [optional] 
@@ -21,12 +22,12 @@ json = "{}"
 # create an instance of ChangeFileOperation from a JSON string
 change_file_operation_instance = ChangeFileOperation.from_json(json)
 # print the JSON string representation of the object
-print ChangeFileOperation.to_json()
+print(ChangeFileOperation.to_json())
 
 # convert the object into a dict
 change_file_operation_dict = change_file_operation_instance.to_dict()
 # create an instance of ChangeFileOperation from a dict
-change_file_operation_form_dict = change_file_operation.from_dict(change_file_operation_dict)
+change_file_operation_from_dict = ChangeFileOperation.from_dict(change_file_operation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

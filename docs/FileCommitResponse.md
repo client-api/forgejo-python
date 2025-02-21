@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | [**CommitUser**](CommitUser.md) |  | [optional] 
@@ -24,12 +25,12 @@ json = "{}"
 # create an instance of FileCommitResponse from a JSON string
 file_commit_response_instance = FileCommitResponse.from_json(json)
 # print the JSON string representation of the object
-print FileCommitResponse.to_json()
+print(FileCommitResponse.to_json())
 
 # convert the object into a dict
 file_commit_response_dict = file_commit_response_instance.to_dict()
 # create an instance of FileCommitResponse from a dict
-file_commit_response_form_dict = file_commit_response.from_dict(file_commit_response_dict)
+file_commit_response_from_dict = FileCommitResponse.from_dict(file_commit_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

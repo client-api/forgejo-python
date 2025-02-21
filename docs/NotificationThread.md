@@ -3,6 +3,7 @@
 NotificationThread expose Notification on API
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
@@ -23,12 +24,12 @@ json = "{}"
 # create an instance of NotificationThread from a JSON string
 notification_thread_instance = NotificationThread.from_json(json)
 # print the JSON string representation of the object
-print NotificationThread.to_json()
+print(NotificationThread.to_json())
 
 # convert the object into a dict
 notification_thread_dict = notification_thread_instance.to_dict()
 # create an instance of NotificationThread from a dict
-notification_thread_form_dict = notification_thread.from_dict(notification_thread_dict)
+notification_thread_from_dict = NotificationThread.from_dict(notification_thread_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

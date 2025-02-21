@@ -3,6 +3,7 @@
 CreateFileOptions options for creating files Note: `author` and `committer` are optional (if only one is given, it will be used for the other, otherwise the authenticated user will be used)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | [**Identity**](Identity.md) |  | [optional] 
@@ -24,12 +25,12 @@ json = "{}"
 # create an instance of CreateFileOptions from a JSON string
 create_file_options_instance = CreateFileOptions.from_json(json)
 # print the JSON string representation of the object
-print CreateFileOptions.to_json()
+print(CreateFileOptions.to_json())
 
 # convert the object into a dict
 create_file_options_dict = create_file_options_instance.to_dict()
 # create an instance of CreateFileOptions from a dict
-create_file_options_form_dict = create_file_options.from_dict(create_file_options_dict)
+create_file_options_from_dict = CreateFileOptions.from_dict(create_file_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

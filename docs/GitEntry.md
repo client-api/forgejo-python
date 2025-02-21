@@ -3,6 +3,7 @@
 GitEntry represents a git tree
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mode** | **str** |  | [optional] 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of GitEntry from a JSON string
 git_entry_instance = GitEntry.from_json(json)
 # print the JSON string representation of the object
-print GitEntry.to_json()
+print(GitEntry.to_json())
 
 # convert the object into a dict
 git_entry_dict = git_entry_instance.to_dict()
 # create an instance of GitEntry from a dict
-git_entry_form_dict = git_entry.from_dict(git_entry_dict)
+git_entry_from_dict = GitEntry.from_dict(git_entry_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

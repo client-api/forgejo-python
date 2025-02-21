@@ -24,9 +24,8 @@ Get instance's global settings for api
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.general_api_settings import GeneralAPISettings
 from clientapi_forgejo.rest import ApiException
@@ -102,6 +101,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -118,6 +118,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GeneralAPISettings |  -  |
@@ -138,9 +139,8 @@ Get instance's global settings for Attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.general_attachment_settings import GeneralAttachmentSettings
 from clientapi_forgejo.rest import ApiException
@@ -216,6 +216,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -232,6 +233,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GeneralAttachmentSettings |  -  |
@@ -252,9 +254,8 @@ Get instance's global settings for repositories
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.general_repo_settings import GeneralRepoSettings
 from clientapi_forgejo.rest import ApiException
@@ -330,6 +331,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -346,6 +348,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GeneralRepoSettings |  -  |
@@ -366,9 +369,8 @@ Get instance's global settings for ui
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.general_ui_settings import GeneralUISettings
 from clientapi_forgejo.rest import ApiException
@@ -444,6 +446,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -460,6 +463,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GeneralUISettings |  -  |

@@ -3,6 +3,7 @@
 CreatePullReviewComment represent a review comment for creation api
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | **str** |  | [optional] 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of CreatePullReviewComment from a JSON string
 create_pull_review_comment_instance = CreatePullReviewComment.from_json(json)
 # print the JSON string representation of the object
-print CreatePullReviewComment.to_json()
+print(CreatePullReviewComment.to_json())
 
 # convert the object into a dict
 create_pull_review_comment_dict = create_pull_review_comment_instance.to_dict()
 # create an instance of CreatePullReviewComment from a dict
-create_pull_review_comment_form_dict = create_pull_review_comment.from_dict(create_pull_review_comment_dict)
+create_pull_review_comment_from_dict = CreatePullReviewComment.from_dict(create_pull_review_comment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

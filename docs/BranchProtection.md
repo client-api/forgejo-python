@@ -3,8 +3,10 @@
 BranchProtection represents a branch protection for a repository
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**apply_to_admins** | **bool** |  | [optional] 
 **approvals_whitelist_teams** | **List[str]** |  | [optional] 
 **approvals_whitelist_username** | **List[str]** |  | [optional] 
 **block_on_official_review_requests** | **bool** |  | [optional] 
@@ -18,6 +20,7 @@ Name | Type | Description | Notes
 **enable_push** | **bool** |  | [optional] 
 **enable_push_whitelist** | **bool** |  | [optional] 
 **enable_status_check** | **bool** |  | [optional] 
+**ignore_stale_approvals** | **bool** |  | [optional] 
 **merge_whitelist_teams** | **List[str]** |  | [optional] 
 **merge_whitelist_usernames** | **List[str]** |  | [optional] 
 **protected_file_patterns** | **str** |  | [optional] 
@@ -41,12 +44,12 @@ json = "{}"
 # create an instance of BranchProtection from a JSON string
 branch_protection_instance = BranchProtection.from_json(json)
 # print the JSON string representation of the object
-print BranchProtection.to_json()
+print(BranchProtection.to_json())
 
 # convert the object into a dict
 branch_protection_dict = branch_protection_instance.to_dict()
 # create an instance of BranchProtection from a dict
-branch_protection_form_dict = branch_protection.from_dict(branch_protection_dict)
+branch_protection_from_dict = BranchProtection.from_dict(branch_protection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,6 +3,7 @@
 DeleteFileOptions options for deleting files (used for other File structs below) Note: `author` and `committer` are optional (if only one is given, it will be used for the other, otherwise the authenticated user will be used)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | [**Identity**](Identity.md) |  | [optional] 
@@ -24,12 +25,12 @@ json = "{}"
 # create an instance of DeleteFileOptions from a JSON string
 delete_file_options_instance = DeleteFileOptions.from_json(json)
 # print the JSON string representation of the object
-print DeleteFileOptions.to_json()
+print(DeleteFileOptions.to_json())
 
 # convert the object into a dict
 delete_file_options_dict = delete_file_options_instance.to_dict()
 # create an instance of DeleteFileOptions from a dict
-delete_file_options_form_dict = delete_file_options.from_dict(delete_file_options_dict)
+delete_file_options_from_dict = DeleteFileOptions.from_dict(delete_file_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,12 +5,20 @@ All URIs are relative to */api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_current_user_repo**](UserApi.md#create_current_user_repo) | **POST** /user/repos | Create a repository
+[**create_user_variable**](UserApi.md#create_user_variable) | **POST** /user/actions/variables/{variablename} | Create a user-level variable
+[**delete_user_secret**](UserApi.md#delete_user_secret) | **DELETE** /user/actions/secrets/{secretname} | Delete a secret in a user scope
+[**delete_user_variable**](UserApi.md#delete_user_variable) | **DELETE** /user/actions/variables/{variablename} | Delete a user-level variable which is created by current doer
 [**get_user_settings**](UserApi.md#get_user_settings) | **GET** /user/settings | Get user settings
+[**get_user_variable**](UserApi.md#get_user_variable) | **GET** /user/actions/variables/{variablename} | Get a user-level variable which is created by current doer
+[**get_user_variables_list**](UserApi.md#get_user_variables_list) | **GET** /user/actions/variables | Get the user-level list of variables which is created by current doer
 [**get_verification_token**](UserApi.md#get_verification_token) | **GET** /user/gpg_key_token | Get a Token to verify
+[**update_user_secret**](UserApi.md#update_user_secret) | **PUT** /user/actions/secrets/{secretname} | Create or Update a secret value in a user scope
 [**update_user_settings**](UserApi.md#update_user_settings) | **PATCH** /user/settings | Update user settings
+[**update_user_variable**](UserApi.md#update_user_variable) | **PUT** /user/actions/variables/{variablename} | Update a user-level variable which is created by current doer
 [**user_add_email**](UserApi.md#user_add_email) | **POST** /user/emails | Add email addresses
 [**user_block_user**](UserApi.md#user_block_user) | **PUT** /user/block/{username} | Blocks a user from the doer.
 [**user_check_following**](UserApi.md#user_check_following) | **GET** /users/{username}/following/{target} | Check if one user is following another user
+[**user_check_quota**](UserApi.md#user_check_quota) | **GET** /user/quota/check | Check if the authenticated user is over quota for a given subject
 [**user_create_hook**](UserApi.md#user_create_hook) | **POST** /user/hooks | Create a hook
 [**user_create_o_auth2_application**](UserApi.md#user_create_o_auth2_application) | **POST** /user/applications/oauth2 | creates a new OAuth2 application
 [**user_create_token**](UserApi.md#user_create_token) | **POST** /users/{username}/tokens | Create an access token
@@ -35,6 +43,7 @@ Method | HTTP request | Description
 [**user_current_put_star**](UserApi.md#user_current_put_star) | **PUT** /user/starred/{owner}/{repo} | Star the given repo
 [**user_current_tracked_times**](UserApi.md#user_current_tracked_times) | **GET** /user/times | List the current user&#39;s tracked times
 [**user_delete_access_token**](UserApi.md#user_delete_access_token) | **DELETE** /users/{username}/tokens/{token} | delete an access token
+[**user_delete_avatar**](UserApi.md#user_delete_avatar) | **DELETE** /user/avatar | Delete Avatar
 [**user_delete_email**](UserApi.md#user_delete_email) | **DELETE** /user/emails | Delete email addresses
 [**user_delete_hook**](UserApi.md#user_delete_hook) | **DELETE** /user/hooks/{id} | Delete a hook
 [**user_delete_o_auth2_application**](UserApi.md#user_delete_o_auth2_application) | **DELETE** /user/applications/oauth2/{id} | delete an OAuth2 Application
@@ -44,7 +53,9 @@ Method | HTTP request | Description
 [**user_get_heatmap_data**](UserApi.md#user_get_heatmap_data) | **GET** /users/{username}/heatmap | Get a user&#39;s heatmap
 [**user_get_hook**](UserApi.md#user_get_hook) | **GET** /user/hooks/{id} | Get a hook
 [**user_get_o_auth2_application**](UserApi.md#user_get_o_auth2_application) | **GET** /user/applications/oauth2/{id} | get an OAuth2 Application
-[**user_get_oauth2_application**](UserApi.md#user_get_oauth2_application) | **GET** /user/applications/oauth2 | List the authenticated user&#39;s oauth2 applications
+[**user_get_o_auth2_applications**](UserApi.md#user_get_o_auth2_applications) | **GET** /user/applications/oauth2 | List the authenticated user&#39;s oauth2 applications
+[**user_get_quota**](UserApi.md#user_get_quota) | **GET** /user/quota | Get quota information for the authenticated user
+[**user_get_runner_registration_token**](UserApi.md#user_get_runner_registration_token) | **GET** /user/actions/runners/registration-token | Get an user&#39;s actions runner registration token
 [**user_get_stop_watches**](UserApi.md#user_get_stop_watches) | **GET** /user/stopwatches | Get list of all existing stopwatches
 [**user_get_tokens**](UserApi.md#user_get_tokens) | **GET** /users/{username}/tokens | List the authenticated user&#39;s access tokens
 [**user_list_activity_feeds**](UserApi.md#user_list_activity_feeds) | **GET** /users/{username}/activities/feeds | List a user&#39;s activity feeds
@@ -55,12 +66,16 @@ Method | HTTP request | Description
 [**user_list_gpg_keys**](UserApi.md#user_list_gpg_keys) | **GET** /users/{username}/gpg_keys | List the given user&#39;s GPG keys
 [**user_list_hooks**](UserApi.md#user_list_hooks) | **GET** /user/hooks | List the authenticated user&#39;s webhooks
 [**user_list_keys**](UserApi.md#user_list_keys) | **GET** /users/{username}/keys | List the given user&#39;s public keys
+[**user_list_quota_artifacts**](UserApi.md#user_list_quota_artifacts) | **GET** /user/quota/artifacts | List the artifacts affecting the authenticated user&#39;s quota
+[**user_list_quota_attachments**](UserApi.md#user_list_quota_attachments) | **GET** /user/quota/attachments | List the attachments affecting the authenticated user&#39;s quota
+[**user_list_quota_packages**](UserApi.md#user_list_quota_packages) | **GET** /user/quota/packages | List the packages affecting the authenticated user&#39;s quota
 [**user_list_repos**](UserApi.md#user_list_repos) | **GET** /users/{username}/repos | List the repos owned by the given user
 [**user_list_starred**](UserApi.md#user_list_starred) | **GET** /users/{username}/starred | The repos that the given user has starred
 [**user_list_subscriptions**](UserApi.md#user_list_subscriptions) | **GET** /users/{username}/subscriptions | List the repositories watched by a user
 [**user_list_teams**](UserApi.md#user_list_teams) | **GET** /user/teams | List all the teams a user belongs to
 [**user_search**](UserApi.md#user_search) | **GET** /users/search | Search for users
 [**user_unblock_user**](UserApi.md#user_unblock_user) | **PUT** /user/unblock/{username} | Unblocks a user from the doer.
+[**user_update_avatar**](UserApi.md#user_update_avatar) | **POST** /user/avatar | Update Avatar
 [**user_update_o_auth2_application**](UserApi.md#user_update_o_auth2_application) | **PATCH** /user/applications/oauth2/{id} | update an OAuth2 Application, this includes regenerating the client secret
 [**user_verify_gpg_key**](UserApi.md#user_verify_gpg_key) | **POST** /user/gpg_key_verify | Verify a GPG key
 
@@ -79,9 +94,8 @@ Create a repository
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_repo_option import CreateRepoOption
 from clientapi_forgejo.models.repository import Repository
@@ -160,6 +174,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional] 
@@ -178,17 +193,386 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Repository |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 **409** | The repository with the same name already exists. |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**413** | QuotaExceeded |  * user_id -  <br>  * message -  <br>  * username -  <br>  |
+**422** | APIValidationError is error format response related to input validation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_user_variable**
+> create_user_variable(variablename, body=body)
+
+Create a user-level variable
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.create_variable_option import CreateVariableOption
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    variablename = 'variablename_example' # str | name of the variable
+    body = clientapi_forgejo.CreateVariableOption() # CreateVariableOption |  (optional)
+
+    try:
+        # Create a user-level variable
+        api_instance.create_user_variable(variablename, body=body)
+    except Exception as e:
+        print("Exception when calling UserApi->create_user_variable: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variablename** | **str**| name of the variable | 
+ **body** | [**CreateVariableOption**](CreateVariableOption.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | response when creating a variable |  -  |
+**204** | response when creating a variable |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_user_secret**
+> delete_user_secret(secretname)
+
+Delete a secret in a user scope
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    secretname = 'secretname_example' # str | name of the secret
+
+    try:
+        # Delete a secret in a user scope
+        api_instance.delete_user_secret(secretname)
+    except Exception as e:
+        print("Exception when calling UserApi->delete_user_secret: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **secretname** | **str**| name of the secret | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | delete one secret of the user |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_user_variable**
+> delete_user_variable(variablename)
+
+Delete a user-level variable which is created by current doer
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    variablename = 'variablename_example' # str | name of the variable
+
+    try:
+        # Delete a user-level variable which is created by current doer
+        api_instance.delete_user_variable(variablename)
+    except Exception as e:
+        print("Exception when calling UserApi->delete_user_variable: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variablename** | **str**| name of the variable | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | response when deleting a variable |  -  |
+**204** | response when deleting a variable |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_settings**
-> List[UserSettings] get_user_settings()
+> UserSettings get_user_settings()
 
 Get user settings
 
@@ -201,9 +585,8 @@ Get user settings
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user_settings import UserSettings
 from clientapi_forgejo.rest import ApiException
@@ -279,11 +662,12 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[UserSettings]**](UserSettings.md)
+[**UserSettings**](UserSettings.md)
 
 ### Authorization
 
@@ -295,9 +679,260 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserSettings |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_variable**
+> ActionVariable get_user_variable(variablename)
+
+Get a user-level variable which is created by current doer
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.action_variable import ActionVariable
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    variablename = 'variablename_example' # str | name of the variable
+
+    try:
+        # Get a user-level variable which is created by current doer
+        api_response = api_instance.get_user_variable(variablename)
+        print("The response of UserApi->get_user_variable:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->get_user_variable: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variablename** | **str**| name of the variable | 
+
+### Return type
+
+[**ActionVariable**](ActionVariable.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | ActionVariable |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_variables_list**
+> List[ActionVariable] get_user_variables_list(page=page, limit=limit)
+
+Get the user-level list of variables which is created by current doer
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.action_variable import ActionVariable
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    page = 56 # int | page number of results to return (1-based) (optional)
+    limit = 56 # int | page size of results (optional)
+
+    try:
+        # Get the user-level list of variables which is created by current doer
+        api_response = api_instance.get_user_variables_list(page=page, limit=limit)
+        print("The response of UserApi->get_user_variables_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->get_user_variables_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**List[ActionVariable]**](ActionVariable.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | VariableList |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -315,9 +950,8 @@ Get a Token to verify
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -392,6 +1026,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -408,15 +1043,142 @@ This endpoint does not need any parameter.
  - **Accept**: text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | APIString is a string response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user_secret**
+> update_user_secret(secretname, body=body)
+
+Create or Update a secret value in a user scope
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.create_or_update_secret_option import CreateOrUpdateSecretOption
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    secretname = 'secretname_example' # str | name of the secret
+    body = clientapi_forgejo.CreateOrUpdateSecretOption() # CreateOrUpdateSecretOption |  (optional)
+
+    try:
+        # Create or Update a secret value in a user scope
+        api_instance.update_user_secret(secretname, body=body)
+    except Exception as e:
+        print("Exception when calling UserApi->update_user_secret: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **secretname** | **str**| name of the secret | 
+ **body** | [**CreateOrUpdateSecretOption**](CreateOrUpdateSecretOption.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | response when creating a secret |  -  |
+**204** | response when updating a secret |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user_settings**
-> List[UserSettings] update_user_settings(body=body)
+> UserSettings update_user_settings(body=body)
 
 Update user settings
 
@@ -429,9 +1191,8 @@ Update user settings
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user_settings import UserSettings
 from clientapi_forgejo.models.user_settings_options import UserSettingsOptions
@@ -510,13 +1271,14 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UserSettingsOptions**](UserSettingsOptions.md)|  | [optional] 
 
 ### Return type
 
-[**List[UserSettings]**](UserSettings.md)
+[**UserSettings**](UserSettings.md)
 
 ### Authorization
 
@@ -528,9 +1290,136 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserSettings |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user_variable**
+> update_user_variable(variablename, body=body)
+
+Update a user-level variable which is created by current doer
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.update_variable_option import UpdateVariableOption
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    variablename = 'variablename_example' # str | name of the variable
+    body = clientapi_forgejo.UpdateVariableOption() # UpdateVariableOption |  (optional)
+
+    try:
+        # Update a user-level variable which is created by current doer
+        api_instance.update_user_variable(variablename, body=body)
+    except Exception as e:
+        print("Exception when calling UserApi->update_user_variable: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variablename** | **str**| name of the variable | 
+ **body** | [**UpdateVariableOption**](UpdateVariableOption.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | response when updating a variable |  -  |
+**204** | response when updating a variable |  -  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -548,9 +1437,8 @@ Add email addresses
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_email_option import CreateEmailOption
 from clientapi_forgejo.models.email import Email
@@ -629,6 +1517,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateEmailOption**](CreateEmailOption.md)|  | [optional] 
@@ -647,10 +1536,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | EmailList |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -668,9 +1560,8 @@ Blocks a user from the doer.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -745,6 +1636,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of the user | 
@@ -760,13 +1652,17 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -784,9 +1680,8 @@ Check if one user is following another user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -862,6 +1757,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of following user | 
@@ -878,13 +1774,129 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_check_quota**
+> user_check_quota()
+
+Check if the authenticated user is over quota for a given subject
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+
+    try:
+        # Check if the authenticated user is over quota for a given subject
+        api_instance.user_check_quota()
+    except Exception as e:
+        print("Exception when calling UserApi->user_check_quota: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Boolean |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -902,9 +1914,8 @@ Create a hook
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_hook_option import CreateHookOption
 from clientapi_forgejo.models.hook import Hook
@@ -983,6 +1994,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateHookOption**](CreateHookOption.md)|  | 
@@ -1001,9 +2013,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Hook |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1021,9 +2036,8 @@ creates a new OAuth2 application
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_o_auth2_application_options import CreateOAuth2ApplicationOptions
 from clientapi_forgejo.models.o_auth2_application import OAuth2Application
@@ -1102,6 +2116,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateOAuth2ApplicationOptions**](CreateOAuth2ApplicationOptions.md)|  | 
@@ -1120,10 +2135,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | OAuth2Application |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1141,9 +2159,8 @@ Create an access token
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.access_token import AccessToken
 from clientapi_forgejo.models.create_access_token_option import CreateAccessTokenOption
@@ -1223,6 +2240,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -1242,10 +2260,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | AccessToken represents an API access token. |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1263,9 +2284,8 @@ Check whether a user is followed by the authenticated user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1340,6 +2360,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of followed user | 
@@ -1355,13 +2376,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1379,9 +2403,8 @@ Whether the authenticated is starring the repo
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1457,6 +2480,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1473,13 +2497,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1497,9 +2524,8 @@ Unfollow a user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1574,6 +2600,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user to unfollow | 
@@ -1589,12 +2616,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1612,9 +2643,8 @@ Remove a GPG key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1689,6 +2719,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of key to delete | 
@@ -1704,14 +2735,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1729,9 +2762,8 @@ Delete a public key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1806,6 +2838,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of key to delete | 
@@ -1821,14 +2854,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1846,9 +2881,8 @@ Unstar the given repo
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1924,6 +2958,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo to unstar | 
@@ -1940,12 +2975,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1963,9 +3002,8 @@ Get a GPG key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.gpg_key import GPGKey
 from clientapi_forgejo.rest import ApiException
@@ -2043,6 +3081,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of key to get | 
@@ -2061,10 +3100,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GPGKey |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2082,9 +3124,8 @@ Get a public key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.public_key import PublicKey
 from clientapi_forgejo.rest import ApiException
@@ -2162,6 +3203,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of key to get | 
@@ -2180,10 +3222,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | PublicKey |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2201,9 +3246,8 @@ List the authenticated user's followers
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -2282,6 +3326,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -2301,9 +3346,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2321,9 +3369,8 @@ List the users that the authenticated user is following
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -2402,6 +3449,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -2421,9 +3469,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2441,9 +3492,8 @@ List the authenticated user's GPG keys
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.gpg_key import GPGKey
 from clientapi_forgejo.rest import ApiException
@@ -2522,6 +3572,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -2541,9 +3592,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GPGKeyList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2561,9 +3615,8 @@ List the authenticated user's public keys
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.public_key import PublicKey
 from clientapi_forgejo.rest import ApiException
@@ -2643,6 +3696,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fingerprint** | **str**| fingerprint of the key | [optional] 
@@ -2663,14 +3717,17 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | PublicKeyList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_current_list_repos**
-> List[Repository] user_current_list_repos(page=page, limit=limit)
+> List[Repository] user_current_list_repos(page=page, limit=limit, order_by=order_by)
 
 List the repos that the authenticated user owns
 
@@ -2683,9 +3740,8 @@ List the repos that the authenticated user owns
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.repository import Repository
 from clientapi_forgejo.rest import ApiException
@@ -2750,10 +3806,11 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     api_instance = clientapi_forgejo.UserApi(api_client)
     page = 56 # int | page number of results to return (1-based) (optional)
     limit = 56 # int | page size of results (optional)
+    order_by = 'order_by_example' # str | order the repositories by name (default), id, or size (optional)
 
     try:
         # List the repos that the authenticated user owns
-        api_response = api_instance.user_current_list_repos(page=page, limit=limit)
+        api_response = api_instance.user_current_list_repos(page=page, limit=limit, order_by=order_by)
         print("The response of UserApi->user_current_list_repos:\n")
         pprint(api_response)
     except Exception as e:
@@ -2764,10 +3821,12 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
  **limit** | **int**| page size of results | [optional] 
+ **order_by** | **str**| order the repositories by name (default), id, or size | [optional] 
 
 ### Return type
 
@@ -2783,9 +3842,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | RepositoryList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2803,9 +3866,8 @@ The repos that the authenticated user has starred
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.repository import Repository
 from clientapi_forgejo.rest import ApiException
@@ -2884,6 +3946,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -2903,9 +3966,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | RepositoryList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2923,9 +3989,8 @@ List repositories watched by the authenticated user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.repository import Repository
 from clientapi_forgejo.rest import ApiException
@@ -3004,6 +4069,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -3023,9 +4089,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | RepositoryList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3043,9 +4112,8 @@ Create a GPG key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_gpg_key_option import CreateGPGKeyOption
 from clientapi_forgejo.models.gpg_key import GPGKey
@@ -3124,6 +4192,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **form** | [**CreateGPGKeyOption**](CreateGPGKeyOption.md)|  | [optional] 
@@ -3142,11 +4211,14 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | GPGKey |  -  |
-**404** | APINotFound is a not found empty response |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3164,9 +4236,8 @@ Create a public key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_key_option import CreateKeyOption
 from clientapi_forgejo.models.public_key import PublicKey
@@ -3245,6 +4316,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional] 
@@ -3263,10 +4335,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | PublicKey |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3284,9 +4359,8 @@ Follow a user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -3361,6 +4435,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user to follow | 
@@ -3376,13 +4451,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3400,9 +4478,8 @@ Star the given repo
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -3478,6 +4555,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo to star | 
@@ -3494,12 +4572,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3517,9 +4599,8 @@ List the current user's tracked times
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.tracked_time import TrackedTime
 from clientapi_forgejo.rest import ApiException
@@ -3600,6 +4681,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -3621,9 +4703,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | TrackedTimeList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3641,9 +4726,8 @@ delete an access token
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -3719,6 +4803,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -3735,14 +4820,130 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
-**422** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIError is error format response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_delete_avatar**
+> user_delete_avatar()
+
+Delete Avatar
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+
+    try:
+        # Delete Avatar
+        api_instance.user_delete_avatar()
+    except Exception as e:
+        print("Exception when calling UserApi->user_delete_avatar: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | APIEmpty is an empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3760,9 +4961,8 @@ Delete email addresses
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.delete_email_option import DeleteEmailOption
 from clientapi_forgejo.rest import ApiException
@@ -3838,6 +5038,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DeleteEmailOption**](DeleteEmailOption.md)|  | [optional] 
@@ -3853,13 +5054,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/plain
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3877,9 +5081,8 @@ Delete a hook
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -3954,6 +5157,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of the hook to delete | 
@@ -3969,12 +5173,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3992,9 +5199,8 @@ delete an OAuth2 Application
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -4069,6 +5275,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| token to be deleted | 
@@ -4084,13 +5291,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4108,9 +5318,8 @@ Update a hook
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_hook_option import EditHookOption
 from clientapi_forgejo.models.hook import Hook
@@ -4190,6 +5399,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of the hook to update | 
@@ -4209,9 +5419,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Hook |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4229,9 +5442,8 @@ Get a user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -4309,6 +5521,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user to get | 
@@ -4327,10 +5540,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4348,9 +5562,8 @@ Get the authenticated user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -4426,6 +5639,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4442,9 +5656,12 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4462,9 +5679,8 @@ Get a user's heatmap
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user_heatmap_data import UserHeatmapData
 from clientapi_forgejo.rest import ApiException
@@ -4542,6 +5758,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user to get | 
@@ -4560,10 +5777,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserHeatmapData |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4581,9 +5799,8 @@ Get a hook
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.hook import Hook
 from clientapi_forgejo.rest import ApiException
@@ -4661,6 +5878,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| id of the hook to get | 
@@ -4679,9 +5897,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Hook |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4699,9 +5920,8 @@ get an OAuth2 Application
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.o_auth2_application import OAuth2Application
 from clientapi_forgejo.rest import ApiException
@@ -4779,6 +5999,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Application ID to be found | 
@@ -4797,15 +6018,18 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OAuth2Application |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **user_get_oauth2_application**
-> List[OAuth2Application] user_get_oauth2_application(page=page, limit=limit)
+# **user_get_o_auth2_applications**
+> List[OAuth2Application] user_get_o_auth2_applications(page=page, limit=limit)
 
 List the authenticated user's oauth2 applications
 
@@ -4818,9 +6042,8 @@ List the authenticated user's oauth2 applications
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.o_auth2_application import OAuth2Application
 from clientapi_forgejo.rest import ApiException
@@ -4888,16 +6111,17 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
     try:
         # List the authenticated user's oauth2 applications
-        api_response = api_instance.user_get_oauth2_application(page=page, limit=limit)
-        print("The response of UserApi->user_get_oauth2_application:\n")
+        api_response = api_instance.user_get_o_auth2_applications(page=page, limit=limit)
+        print("The response of UserApi->user_get_o_auth2_applications:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserApi->user_get_oauth2_application: %s\n" % e)
+        print("Exception when calling UserApi->user_get_o_auth2_applications: %s\n" % e)
 ```
 
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4918,9 +6142,243 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OAuth2ApplicationList represents a list of OAuth2 applications. |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_get_quota**
+> QuotaInfo user_get_quota()
+
+Get quota information for the authenticated user
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.quota_info import QuotaInfo
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+
+    try:
+        # Get quota information for the authenticated user
+        api_response = api_instance.user_get_quota()
+        print("The response of UserApi->user_get_quota:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->user_get_quota: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**QuotaInfo**](QuotaInfo.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | QuotaInfo |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_get_runner_registration_token**
+> user_get_runner_registration_token()
+
+Get an user's actions runner registration token
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+
+    try:
+        # Get an user's actions runner registration token
+        api_instance.user_get_runner_registration_token()
+    except Exception as e:
+        print("Exception when calling UserApi->user_get_runner_registration_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | RegistrationToken is a string used to register a runner with a server |  * token -  <br>  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4938,9 +6396,8 @@ Get list of all existing stopwatches
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.stop_watch import StopWatch
 from clientapi_forgejo.rest import ApiException
@@ -5019,6 +6476,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -5038,9 +6496,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | StopWatchList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5058,9 +6519,8 @@ List the authenticated user's access tokens
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.access_token import AccessToken
 from clientapi_forgejo.rest import ApiException
@@ -5140,6 +6600,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -5160,9 +6621,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | AccessTokenList represents a list of API access token. |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5180,9 +6644,8 @@ List a user's activity feeds
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.activity import Activity
 from clientapi_forgejo.rest import ApiException
@@ -5264,6 +6727,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -5286,10 +6750,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ActivityFeedsList |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5307,9 +6772,8 @@ List the authenticated user's blocked users
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.blocked_user import BlockedUser
 from clientapi_forgejo.rest import ApiException
@@ -5388,6 +6852,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -5407,9 +6872,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | BlockedUserList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5427,9 +6895,8 @@ List the authenticated user's email addresses
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.email import Email
 from clientapi_forgejo.rest import ApiException
@@ -5505,6 +6972,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -5521,9 +6989,12 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | EmailList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5541,9 +7012,8 @@ List the given user's followers
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -5623,6 +7093,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -5643,9 +7114,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5663,9 +7136,8 @@ List the users that the given user is following
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -5745,6 +7217,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -5765,9 +7238,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5785,9 +7260,8 @@ List the given user's GPG keys
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.gpg_key import GPGKey
 from clientapi_forgejo.rest import ApiException
@@ -5867,6 +7341,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -5887,9 +7362,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | GPGKeyList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5907,9 +7384,8 @@ List the authenticated user's webhooks
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.hook import Hook
 from clientapi_forgejo.rest import ApiException
@@ -5988,6 +7464,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -6007,9 +7484,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | HookList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6027,9 +7507,8 @@ List the given user's public keys
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.public_key import PublicKey
 from clientapi_forgejo.rest import ApiException
@@ -6110,6 +7589,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -6131,9 +7611,380 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | PublicKeyList |  -  |
+**404** | APINotFound is a not found error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_list_quota_artifacts**
+> List[QuotaUsedArtifact] user_list_quota_artifacts(page=page, limit=limit)
+
+List the artifacts affecting the authenticated user's quota
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.quota_used_artifact import QuotaUsedArtifact
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    page = 56 # int | page number of results to return (1-based) (optional)
+    limit = 56 # int | page size of results (optional)
+
+    try:
+        # List the artifacts affecting the authenticated user's quota
+        api_response = api_instance.user_list_quota_artifacts(page=page, limit=limit)
+        print("The response of UserApi->user_list_quota_artifacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->user_list_quota_artifacts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**List[QuotaUsedArtifact]**](QuotaUsedArtifact.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | QuotaUsedArtifactList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_list_quota_attachments**
+> List[QuotaUsedAttachment] user_list_quota_attachments(page=page, limit=limit)
+
+List the attachments affecting the authenticated user's quota
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.quota_used_attachment import QuotaUsedAttachment
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    page = 56 # int | page number of results to return (1-based) (optional)
+    limit = 56 # int | page size of results (optional)
+
+    try:
+        # List the attachments affecting the authenticated user's quota
+        api_response = api_instance.user_list_quota_attachments(page=page, limit=limit)
+        print("The response of UserApi->user_list_quota_attachments:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->user_list_quota_attachments: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**List[QuotaUsedAttachment]**](QuotaUsedAttachment.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | QuotaUsedAttachmentList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_list_quota_packages**
+> List[QuotaUsedPackage] user_list_quota_packages(page=page, limit=limit)
+
+List the packages affecting the authenticated user's quota
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.quota_used_package import QuotaUsedPackage
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    page = 56 # int | page number of results to return (1-based) (optional)
+    limit = 56 # int | page size of results (optional)
+
+    try:
+        # List the packages affecting the authenticated user's quota
+        api_response = api_instance.user_list_quota_packages(page=page, limit=limit)
+        print("The response of UserApi->user_list_quota_packages:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->user_list_quota_packages: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**List[QuotaUsedPackage]**](QuotaUsedPackage.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | QuotaUsedPackageList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6151,9 +8002,8 @@ List the repos owned by the given user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.repository import Repository
 from clientapi_forgejo.rest import ApiException
@@ -6233,6 +8083,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -6253,9 +8104,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | RepositoryList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6273,9 +8126,8 @@ The repos that the given user has starred
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.repository import Repository
 from clientapi_forgejo.rest import ApiException
@@ -6355,6 +8207,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
@@ -6375,9 +8228,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | RepositoryList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6395,9 +8250,8 @@ List the repositories watched by a user
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.repository import Repository
 from clientapi_forgejo.rest import ApiException
@@ -6477,6 +8331,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of the user | 
@@ -6497,9 +8352,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | RepositoryList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6517,9 +8374,8 @@ List all the teams a user belongs to
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.team import Team
 from clientapi_forgejo.rest import ApiException
@@ -6598,6 +8454,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -6617,9 +8474,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | TeamList |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6637,9 +8497,8 @@ Search for users
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user_search200_response import UserSearch200Response
 from clientapi_forgejo.rest import ApiException
@@ -6720,6 +8579,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **str**| keyword | [optional] 
@@ -6741,6 +8601,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | SearchResults of a successful search |  -  |
@@ -6761,9 +8622,8 @@ Unblocks a user from the doer.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -6838,6 +8698,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of the user | 
@@ -6853,13 +8714,136 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_update_avatar**
+> user_update_avatar(body=body)
+
+Update Avatar
+
+### Example
+
+* Api Key Authentication (TOTPHeader):
+* Api Key Authentication (AuthorizationHeaderToken):
+* Api Key Authentication (SudoHeader):
+* Basic Authentication (BasicAuth):
+* Api Key Authentication (AccessToken):
+* Api Key Authentication (SudoParam):
+* Api Key Authentication (Token):
+
+```python
+import clientapi_forgejo
+from clientapi_forgejo.models.update_user_avatar_option import UpdateUserAvatarOption
+from clientapi_forgejo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = clientapi_forgejo.Configuration(
+    host = "/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: TOTPHeader
+configuration.api_key['TOTPHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['TOTPHeader'] = 'Bearer'
+
+# Configure API key authorization: AuthorizationHeaderToken
+configuration.api_key['AuthorizationHeaderToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AuthorizationHeaderToken'] = 'Bearer'
+
+# Configure API key authorization: SudoHeader
+configuration.api_key['SudoHeader'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoHeader'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = clientapi_forgejo.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Configure API key authorization: AccessToken
+configuration.api_key['AccessToken'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['AccessToken'] = 'Bearer'
+
+# Configure API key authorization: SudoParam
+configuration.api_key['SudoParam'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['SudoParam'] = 'Bearer'
+
+# Configure API key authorization: Token
+configuration.api_key['Token'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with clientapi_forgejo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = clientapi_forgejo.UserApi(api_client)
+    body = clientapi_forgejo.UpdateUserAvatarOption() # UpdateUserAvatarOption |  (optional)
+
+    try:
+        # Update Avatar
+        api_instance.user_update_avatar(body=body)
+    except Exception as e:
+        print("Exception when calling UserApi->user_update_avatar: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateUserAvatarOption**](UpdateUserAvatarOption.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | APIEmpty is an empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6877,9 +8861,8 @@ update an OAuth2 Application, this includes regenerating the client secret
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_o_auth2_application_options import CreateOAuth2ApplicationOptions
 from clientapi_forgejo.models.o_auth2_application import OAuth2Application
@@ -6959,6 +8942,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| application to be updated | 
@@ -6978,10 +8962,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OAuth2Application |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6999,9 +8986,8 @@ Verify a GPG key
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.gpg_key import GPGKey
 from clientapi_forgejo.rest import ApiException
@@ -7077,6 +9063,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -7093,11 +9080,14 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | GPGKey |  -  |
-**404** | APINotFound is a not found empty response |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**401** | APIUnauthorizedError is a unauthorized error response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

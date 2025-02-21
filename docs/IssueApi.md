@@ -87,9 +87,8 @@ Add a label to an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue_labels_option import IssueLabelsOption
 from clientapi_forgejo.models.label import Label
@@ -171,6 +170,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -192,10 +192,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LabelList |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -213,9 +215,8 @@ Subscribe user to issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -293,6 +294,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -311,15 +313,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Already subscribed |  -  |
 **201** | Successfully Subscribed |  -  |
 **304** | User can only subscribe itself if he is no admin |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -337,9 +340,8 @@ Add tracked time to a issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.add_time_option import AddTimeOption
 from clientapi_forgejo.models.tracked_time import TrackedTime
@@ -421,6 +423,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -442,11 +445,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | TrackedTime |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -464,9 +469,8 @@ Check if user is subscribed to an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.watch_info import WatchInfo
 from clientapi_forgejo.rest import ApiException
@@ -546,6 +550,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -566,15 +571,16 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | WatchInfo |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issue_clear_labels**
-> issue_clear_labels(owner, repo, index)
+> issue_clear_labels(owner, repo, index, body=body)
 
 Remove all labels from an issue
 
@@ -587,10 +593,10 @@ Remove all labels from an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
+from clientapi_forgejo.models.delete_labels_option import DeleteLabelsOption
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
 
@@ -654,10 +660,11 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     owner = 'owner_example' # str | owner of the repo
     repo = 'repo_example' # str | name of the repo
     index = 56 # int | index of the issue
+    body = clientapi_forgejo.DeleteLabelsOption() # DeleteLabelsOption |  (optional)
 
     try:
         # Remove all labels from an issue
-        api_instance.issue_clear_labels(owner, repo, index)
+        api_instance.issue_clear_labels(owner, repo, index, body=body)
     except Exception as e:
         print("Exception when calling IssueApi->issue_clear_labels: %s\n" % e)
 ```
@@ -666,11 +673,13 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
  **repo** | **str**| name of the repo | 
  **index** | **int**| index of the issue | 
+ **body** | [**DeleteLabelsOption**](DeleteLabelsOption.md)|  | [optional] 
 
 ### Return type
 
@@ -682,14 +691,16 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -707,9 +718,8 @@ Add a comment to an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.comment import Comment
 from clientapi_forgejo.models.create_issue_comment_option import CreateIssueCommentOption
@@ -791,6 +801,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -812,10 +823,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Comment |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -833,9 +847,8 @@ Create an issue. If using deadline only the date will be taken into account, and
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_issue_option import CreateIssueOption
 from clientapi_forgejo.models.issue import Issue
@@ -916,6 +929,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -936,17 +950,20 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Issue |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**412** | APIError is error format response |  * message -  <br>  * url -  <br>  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**412** | APIError is error format response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issue_create_issue_attachment**
-> Attachment issue_create_issue_attachment(owner, repo, index, attachment, name=name)
+> Attachment issue_create_issue_attachment(owner, repo, index, attachment, name=name, updated_at=updated_at)
 
 Create an issue attachment
 
@@ -959,9 +976,8 @@ Create an issue attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.rest import ApiException
@@ -1029,10 +1045,11 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     index = 56 # int | index of the issue
     attachment = None # bytearray | attachment to upload
     name = 'name_example' # str | name of the attachment (optional)
+    updated_at = '2013-10-20T19:20:30+01:00' # datetime | time of the attachment's creation. This is a timestamp in RFC 3339 format (optional)
 
     try:
         # Create an issue attachment
-        api_response = api_instance.issue_create_issue_attachment(owner, repo, index, attachment, name=name)
+        api_response = api_instance.issue_create_issue_attachment(owner, repo, index, attachment, name=name, updated_at=updated_at)
         print("The response of IssueApi->issue_create_issue_attachment:\n")
         pprint(api_response)
     except Exception as e:
@@ -1043,6 +1060,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1050,6 +1068,7 @@ Name | Type | Description  | Notes
  **index** | **int**| index of the issue | 
  **attachment** | **bytearray**| attachment to upload | 
  **name** | **str**| name of the attachment | [optional] 
+ **updated_at** | **datetime**| time of the attachment&#39;s creation. This is a timestamp in RFC 3339 format | [optional] 
 
 ### Return type
 
@@ -1065,11 +1084,15 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Attachment |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**404** | APIError is error format response |  -  |
+**413** | QuotaExceeded |  * user_id -  <br>  * message -  <br>  * username -  <br>  |
+**422** | APIValidationError is error format response related to input validation |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1087,9 +1110,8 @@ Block the issue given in the body by the issue in path
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.models.issue_meta import IssueMeta
@@ -1171,6 +1193,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1192,6 +1215,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Issue |  -  |
@@ -1200,7 +1224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issue_create_issue_comment_attachment**
-> Attachment issue_create_issue_comment_attachment(owner, repo, id, attachment, name=name)
+> Attachment issue_create_issue_comment_attachment(owner, repo, id, attachment, name=name, updated_at=updated_at)
 
 Create a comment attachment
 
@@ -1213,9 +1237,8 @@ Create a comment attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.rest import ApiException
@@ -1283,10 +1306,11 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     id = 56 # int | id of the comment
     attachment = None # bytearray | attachment to upload
     name = 'name_example' # str | name of the attachment (optional)
+    updated_at = '2013-10-20T19:20:30+01:00' # datetime | time of the attachment's creation. This is a timestamp in RFC 3339 format (optional)
 
     try:
         # Create a comment attachment
-        api_response = api_instance.issue_create_issue_comment_attachment(owner, repo, id, attachment, name=name)
+        api_response = api_instance.issue_create_issue_comment_attachment(owner, repo, id, attachment, name=name, updated_at=updated_at)
         print("The response of IssueApi->issue_create_issue_comment_attachment:\n")
         pprint(api_response)
     except Exception as e:
@@ -1297,6 +1321,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1304,6 +1329,7 @@ Name | Type | Description  | Notes
  **id** | **int**| id of the comment | 
  **attachment** | **bytearray**| attachment to upload | 
  **name** | **str**| name of the attachment | [optional] 
+ **updated_at** | **datetime**| time of the attachment&#39;s creation. This is a timestamp in RFC 3339 format | [optional] 
 
 ### Return type
 
@@ -1319,11 +1345,15 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Attachment |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**404** | APIError is error format response |  -  |
+**413** | QuotaExceeded |  * user_id -  <br>  * message -  <br>  * username -  <br>  |
+**422** | APIValidationError is error format response related to input validation |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1341,9 +1371,8 @@ Make the issue in the url depend on the issue in the form.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.models.issue_meta import IssueMeta
@@ -1425,6 +1454,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1446,10 +1476,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Issue |  -  |
 **404** | the issue does not exist |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1467,9 +1499,8 @@ Create a label
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_label_option import CreateLabelOption
 from clientapi_forgejo.models.label import Label
@@ -1550,6 +1581,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1570,10 +1602,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Label |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1591,9 +1625,8 @@ Create a milestone
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.create_milestone_option import CreateMilestoneOption
 from clientapi_forgejo.models.milestone import Milestone
@@ -1674,6 +1707,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1694,9 +1728,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Milestone |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1714,9 +1750,8 @@ Delete an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1793,6 +1828,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1810,14 +1846,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1835,9 +1872,8 @@ Delete a comment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -1914,6 +1950,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -1931,14 +1968,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1956,9 +1994,8 @@ Delete a comment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -2036,6 +2073,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2054,14 +2092,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2079,9 +2118,8 @@ Remove a reaction from a comment of an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_reaction_option import EditReactionOption
 from clientapi_forgejo.rest import ApiException
@@ -2160,6 +2198,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2178,13 +2217,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2202,9 +2243,8 @@ Delete an issue attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -2282,6 +2322,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2300,13 +2341,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2324,9 +2367,8 @@ Delete a comment attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -2404,6 +2446,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2422,13 +2465,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2446,9 +2491,8 @@ Remove a reaction from an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_reaction_option import EditReactionOption
 from clientapi_forgejo.rest import ApiException
@@ -2527,6 +2571,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2545,13 +2590,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2569,9 +2616,8 @@ Delete a label
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -2648,6 +2694,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2665,12 +2712,14 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2688,9 +2737,8 @@ Delete a milestone
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -2767,6 +2815,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2784,12 +2833,14 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2807,9 +2858,8 @@ Delete an issue's existing stopwatch.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -2886,6 +2936,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -2903,14 +2954,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
 **403** | Not repo writer, user does not have rights to toggle stopwatch |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 **409** | Cannot cancel a non existent stopwatch |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2929,9 +2981,8 @@ Unsubscribe user from issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -3009,6 +3060,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3027,15 +3079,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Already unsubscribed |  -  |
 **201** | Successfully Unsubscribed |  -  |
 **304** | User can only subscribe itself if he is no admin |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3053,9 +3106,8 @@ Delete specific tracked time
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -3133,6 +3185,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3151,14 +3204,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3176,9 +3231,8 @@ Edit a comment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.comment import Comment
 from clientapi_forgejo.models.edit_issue_comment_option import EditIssueCommentOption
@@ -3260,6 +3314,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3281,12 +3336,14 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Comment |  -  |
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3304,9 +3361,8 @@ Edit a comment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.comment import Comment
 from clientapi_forgejo.models.edit_issue_comment_option import EditIssueCommentOption
@@ -3389,6 +3445,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3411,12 +3468,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Comment |  -  |
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3434,9 +3492,8 @@ Edit an issue. If using deadline only the date will be taken into account, and t
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_issue_option import EditIssueOption
 from clientapi_forgejo.models.issue import Issue
@@ -3518,6 +3575,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3539,12 +3597,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Issue |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
-**412** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**412** | APIError is error format response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3562,9 +3621,8 @@ Edit an issue attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.models.edit_attachment_options import EditAttachmentOptions
@@ -3647,6 +3705,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3669,10 +3728,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Attachment |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
+**413** | QuotaExceeded |  * user_id -  <br>  * message -  <br>  * username -  <br>  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3690,9 +3752,8 @@ Edit a comment attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.models.edit_attachment_options import EditAttachmentOptions
@@ -3775,6 +3836,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3797,10 +3859,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Attachment |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
+**413** | QuotaExceeded |  * user_id -  <br>  * message -  <br>  * username -  <br>  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3818,9 +3883,8 @@ Set an issue deadline. If set to null, the deadline is deleted. If using deadlin
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_deadline_option import EditDeadlineOption
 from clientapi_forgejo.models.issue_deadline import IssueDeadline
@@ -3902,6 +3966,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -3923,11 +3988,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | IssueDeadline |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3945,9 +4011,8 @@ Update a label
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_label_option import EditLabelOption
 from clientapi_forgejo.models.label import Label
@@ -4029,6 +4094,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4050,10 +4116,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Label |  -  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4071,9 +4139,8 @@ Update a milestone
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_milestone_option import EditMilestoneOption
 from clientapi_forgejo.models.milestone import Milestone
@@ -4155,6 +4222,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4176,9 +4244,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Milestone |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4196,9 +4266,8 @@ Get a comment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.comment import Comment
 from clientapi_forgejo.rest import ApiException
@@ -4278,6 +4347,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4298,12 +4368,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Comment |  -  |
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4321,9 +4392,8 @@ Get a list of reactions from a comment of an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.reaction import Reaction
 from clientapi_forgejo.rest import ApiException
@@ -4403,6 +4473,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4423,10 +4494,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ReactionList |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4444,9 +4517,8 @@ List all comments on an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.comment import Comment
 from clientapi_forgejo.rest import ApiException
@@ -4528,6 +4600,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4550,9 +4623,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | CommentList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4570,9 +4645,8 @@ List all comments and events on an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.timeline_comment import TimelineComment
 from clientapi_forgejo.rest import ApiException
@@ -4656,6 +4730,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4680,9 +4755,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | TimelineList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4700,9 +4777,8 @@ Get an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.rest import ApiException
@@ -4782,6 +4858,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4802,10 +4879,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Issue |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4823,9 +4901,8 @@ Get an issue attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.rest import ApiException
@@ -4906,6 +4983,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -4927,10 +5005,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Attachment |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4948,9 +5027,8 @@ Get a comment attachment
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.rest import ApiException
@@ -5031,6 +5109,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5052,10 +5131,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Attachment |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5073,9 +5153,8 @@ Get a list reactions of an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.reaction import Reaction
 from clientapi_forgejo.rest import ApiException
@@ -5157,6 +5236,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5179,10 +5259,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ReactionList |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5200,9 +5282,8 @@ Get a single label
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.label import Label
 from clientapi_forgejo.rest import ApiException
@@ -5282,6 +5363,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5302,9 +5384,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Label |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5322,9 +5406,8 @@ Get an issue's labels
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.label import Label
 from clientapi_forgejo.rest import ApiException
@@ -5404,6 +5487,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5424,10 +5508,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LabelList |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5445,9 +5530,8 @@ Get a milestone
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.milestone import Milestone
 from clientapi_forgejo.rest import ApiException
@@ -5527,6 +5611,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5547,9 +5632,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Milestone |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5567,9 +5654,8 @@ Get all of a repository's opened milestones
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.milestone import Milestone
 from clientapi_forgejo.rest import ApiException
@@ -5652,6 +5738,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5675,9 +5762,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | MilestoneList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5695,9 +5784,8 @@ List all comments in a repository
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.comment import Comment
 from clientapi_forgejo.rest import ApiException
@@ -5780,6 +5868,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5803,9 +5892,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | CommentList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5823,9 +5914,8 @@ List issues that are blocked by this issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.rest import ApiException
@@ -5907,6 +5997,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -5929,9 +6020,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | IssueList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5949,9 +6042,8 @@ List issue's attachments
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.rest import ApiException
@@ -6031,6 +6123,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6051,10 +6144,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | AttachmentList |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6072,9 +6166,8 @@ List comment's attachments
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.attachment import Attachment
 from clientapi_forgejo.rest import ApiException
@@ -6154,6 +6247,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6174,10 +6268,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | AttachmentList |  -  |
-**404** | APIError is error format response |  * message -  <br>  * url -  <br>  |
+**404** | APIError is error format response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6195,9 +6290,8 @@ List an issue's dependencies, i.e all issues that block this issue.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.rest import ApiException
@@ -6279,6 +6373,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6301,9 +6396,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | IssueList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6321,9 +6418,8 @@ List a repository's issues
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.rest import ApiException
@@ -6395,7 +6491,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     milestones = 'milestones_example' # str | comma separated list of milestone names or ids. It uses names and fall back to ids. Fetch only issues that have any of this milestones. Non existent milestones are discarded (optional)
     since = '2013-10-20T19:20:30+01:00' # datetime | Only show items updated after the given time. This is a timestamp in RFC 3339 format (optional)
     before = '2013-10-20T19:20:30+01:00' # datetime | Only show items updated before the given time. This is a timestamp in RFC 3339 format (optional)
-    created_by = 'created_by_example' # str | Only show items which were created by the the given user (optional)
+    created_by = 'created_by_example' # str | Only show items which were created by the given user (optional)
     assigned_by = 'assigned_by_example' # str | Only show items for which the given user is assigned (optional)
     mentioned_by = 'mentioned_by_example' # str | Only show items in which the given user was mentioned (optional)
     page = 56 # int | page number of results to return (1-based) (optional)
@@ -6414,6 +6510,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6425,7 +6522,7 @@ Name | Type | Description  | Notes
  **milestones** | **str**| comma separated list of milestone names or ids. It uses names and fall back to ids. Fetch only issues that have any of this milestones. Non existent milestones are discarded | [optional] 
  **since** | **datetime**| Only show items updated after the given time. This is a timestamp in RFC 3339 format | [optional] 
  **before** | **datetime**| Only show items updated before the given time. This is a timestamp in RFC 3339 format | [optional] 
- **created_by** | **str**| Only show items which were created by the the given user | [optional] 
+ **created_by** | **str**| Only show items which were created by the given user | [optional] 
  **assigned_by** | **str**| Only show items for which the given user is assigned | [optional] 
  **mentioned_by** | **str**| Only show items in which the given user was mentioned | [optional] 
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -6445,9 +6542,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | IssueList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6465,9 +6564,8 @@ Get all of a repository's labels
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.label import Label
 from clientapi_forgejo.rest import ApiException
@@ -6548,6 +6646,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6569,9 +6668,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LabelList |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6589,9 +6690,8 @@ Add a reaction to a comment of an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_reaction_option import EditReactionOption
 from clientapi_forgejo.models.reaction import Reaction
@@ -6673,6 +6773,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6694,11 +6795,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reaction |  -  |
 **201** | Reaction |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6716,9 +6819,8 @@ Add a reaction to an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.edit_reaction_option import EditReactionOption
 from clientapi_forgejo.models.reaction import Reaction
@@ -6800,6 +6902,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6821,11 +6924,13 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reaction |  -  |
 **201** | Reaction |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6843,9 +6948,8 @@ Unblock the issue given in the body by the issue in path
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.models.issue_meta import IssueMeta
@@ -6927,6 +7031,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -6948,9 +7053,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Issue |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6968,9 +7075,8 @@ Remove an issue dependency
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.models.issue_meta import IssueMeta
@@ -7052,6 +7158,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -7073,14 +7180,17 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Issue |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**423** | APIRepoArchivedError is an error that is raised when an archived repo should be modified |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issue_remove_label**
-> issue_remove_label(owner, repo, index, id)
+> issue_remove_label(owner, repo, index, id, body=body)
 
 Remove a label from an issue
 
@@ -7093,10 +7203,10 @@ Remove a label from an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
+from clientapi_forgejo.models.delete_labels_option import DeleteLabelsOption
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
 
@@ -7161,10 +7271,11 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
     repo = 'repo_example' # str | name of the repo
     index = 56 # int | index of the issue
     id = 56 # int | id of the label to remove
+    body = clientapi_forgejo.DeleteLabelsOption() # DeleteLabelsOption |  (optional)
 
     try:
         # Remove a label from an issue
-        api_instance.issue_remove_label(owner, repo, index, id)
+        api_instance.issue_remove_label(owner, repo, index, id, body=body)
     except Exception as e:
         print("Exception when calling IssueApi->issue_remove_label: %s\n" % e)
 ```
@@ -7173,12 +7284,14 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
  **repo** | **str**| name of the repo | 
  **index** | **int**| index of the issue | 
  **id** | **int**| id of the label to remove | 
+ **body** | [**DeleteLabelsOption**](DeleteLabelsOption.md)|  | [optional] 
 
 ### Return type
 
@@ -7190,15 +7303,17 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**422** | APIValidationError is error format response related to input validation |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7216,9 +7331,8 @@ Replace an issue's labels
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue_labels_option import IssueLabelsOption
 from clientapi_forgejo.models.label import Label
@@ -7300,6 +7414,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -7321,10 +7436,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | LabelList |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7342,9 +7459,8 @@ Reset a tracked time of an issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -7421,6 +7537,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -7438,14 +7555,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**400** | APIError is error format response |  * message -  <br>  * url -  <br>  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
+**400** | APIError is error format response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7463,9 +7582,8 @@ Search for issues across the repositories that the user has access to
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.issue import Issue
 from clientapi_forgejo.rest import ApiException
@@ -7528,23 +7646,23 @@ configuration.api_key['Token'] = os.environ["API_KEY"]
 with clientapi_forgejo.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = clientapi_forgejo.IssueApi(api_client)
-    state = 'state_example' # str | whether issue is open or closed (optional)
-    labels = 'labels_example' # str | comma separated list of labels. Fetch only issues that have any of this labels. Non existent labels are discarded (optional)
-    milestones = 'milestones_example' # str | comma separated list of milestone names. Fetch only issues that have any of this milestones. Non existent are discarded (optional)
-    q = 'q_example' # str | search string (optional)
-    priority_repo_id = 56 # int | repository to prioritize in the results (optional)
-    type = 'type_example' # str | filter by type (issues / pulls) if set (optional)
-    since = '2013-10-20T19:20:30+01:00' # datetime | Only show notifications updated after the given time. This is a timestamp in RFC 3339 format (optional)
-    before = '2013-10-20T19:20:30+01:00' # datetime | Only show notifications updated before the given time. This is a timestamp in RFC 3339 format (optional)
-    assigned = True # bool | filter (issues / pulls) assigned to you, default is false (optional)
-    created = True # bool | filter (issues / pulls) created by you, default is false (optional)
-    mentioned = True # bool | filter (issues / pulls) mentioning you, default is false (optional)
-    review_requested = True # bool | filter pulls requesting your review, default is false (optional)
-    reviewed = True # bool | filter pulls reviewed by you, default is false (optional)
-    owner = 'owner_example' # str | filter by owner (optional)
-    team = 'team_example' # str | filter by team (requires organization owner parameter to be provided) (optional)
-    page = 56 # int | page number of results to return (1-based) (optional)
-    limit = 56 # int | page size of results (optional)
+    state = open # str | State of the issue (optional) (default to open)
+    labels = 'labels_example' # str | Comma-separated list of label names. Fetch only issues that have any of these labels. Non existent labels are discarded. (optional)
+    milestones = 'milestones_example' # str | Comma-separated list of milestone names. Fetch only issues that have any of these milestones. Non existent milestones are discarded. (optional)
+    q = 'q_example' # str | Search string (optional)
+    priority_repo_id = 56 # int | Repository ID to prioritize in the results (optional)
+    type = 'type_example' # str | Filter by issue type (optional)
+    since = '2013-10-20T19:20:30+01:00' # datetime | Only show issues updated after the given time (RFC 3339 format) (optional)
+    before = '2013-10-20T19:20:30+01:00' # datetime | Only show issues updated before the given time (RFC 3339 format) (optional)
+    assigned = False # bool | Filter issues or pulls assigned to the authenticated user (optional) (default to False)
+    created = False # bool | Filter issues or pulls created by the authenticated user (optional) (default to False)
+    mentioned = False # bool | Filter issues or pulls mentioning the authenticated user (optional) (default to False)
+    review_requested = False # bool | Filter pull requests where the authenticated user's review was requested (optional) (default to False)
+    reviewed = False # bool | Filter pull requests reviewed by the authenticated user (optional) (default to False)
+    owner = 'owner_example' # str | Filter by repository owner (optional)
+    team = 'team_example' # str | Filter by team (requires organization owner parameter) (optional)
+    page = 1 # int | Page number of results to return (1-based) (optional) (default to 1)
+    limit = 56 # int | Number of items per page (optional)
 
     try:
         # Search for issues across the repositories that the user has access to
@@ -7559,25 +7677,26 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **state** | **str**| whether issue is open or closed | [optional] 
- **labels** | **str**| comma separated list of labels. Fetch only issues that have any of this labels. Non existent labels are discarded | [optional] 
- **milestones** | **str**| comma separated list of milestone names. Fetch only issues that have any of this milestones. Non existent are discarded | [optional] 
- **q** | **str**| search string | [optional] 
- **priority_repo_id** | **int**| repository to prioritize in the results | [optional] 
- **type** | **str**| filter by type (issues / pulls) if set | [optional] 
- **since** | **datetime**| Only show notifications updated after the given time. This is a timestamp in RFC 3339 format | [optional] 
- **before** | **datetime**| Only show notifications updated before the given time. This is a timestamp in RFC 3339 format | [optional] 
- **assigned** | **bool**| filter (issues / pulls) assigned to you, default is false | [optional] 
- **created** | **bool**| filter (issues / pulls) created by you, default is false | [optional] 
- **mentioned** | **bool**| filter (issues / pulls) mentioning you, default is false | [optional] 
- **review_requested** | **bool**| filter pulls requesting your review, default is false | [optional] 
- **reviewed** | **bool**| filter pulls reviewed by you, default is false | [optional] 
- **owner** | **str**| filter by owner | [optional] 
- **team** | **str**| filter by team (requires organization owner parameter to be provided) | [optional] 
- **page** | **int**| page number of results to return (1-based) | [optional] 
- **limit** | **int**| page size of results | [optional] 
+ **state** | **str**| State of the issue | [optional] [default to open]
+ **labels** | **str**| Comma-separated list of label names. Fetch only issues that have any of these labels. Non existent labels are discarded. | [optional] 
+ **milestones** | **str**| Comma-separated list of milestone names. Fetch only issues that have any of these milestones. Non existent milestones are discarded. | [optional] 
+ **q** | **str**| Search string | [optional] 
+ **priority_repo_id** | **int**| Repository ID to prioritize in the results | [optional] 
+ **type** | **str**| Filter by issue type | [optional] 
+ **since** | **datetime**| Only show issues updated after the given time (RFC 3339 format) | [optional] 
+ **before** | **datetime**| Only show issues updated before the given time (RFC 3339 format) | [optional] 
+ **assigned** | **bool**| Filter issues or pulls assigned to the authenticated user | [optional] [default to False]
+ **created** | **bool**| Filter issues or pulls created by the authenticated user | [optional] [default to False]
+ **mentioned** | **bool**| Filter issues or pulls mentioning the authenticated user | [optional] [default to False]
+ **review_requested** | **bool**| Filter pull requests where the authenticated user&#39;s review was requested | [optional] [default to False]
+ **reviewed** | **bool**| Filter pull requests reviewed by the authenticated user | [optional] [default to False]
+ **owner** | **str**| Filter by repository owner | [optional] 
+ **team** | **str**| Filter by team (requires organization owner parameter) | [optional] 
+ **page** | **int**| Page number of results to return (1-based) | [optional] [default to 1]
+ **limit** | **int**| Number of items per page | [optional] 
 
 ### Return type
 
@@ -7593,9 +7712,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | IssueList |  -  |
+**400** | APIError is error format response |  -  |
+**422** | APIValidationError is error format response related to input validation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7613,9 +7735,8 @@ Start stopwatch on an issue.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -7692,6 +7813,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -7709,14 +7831,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | APIEmpty is an empty response |  -  |
 **403** | Not repo writer, user does not have rights to toggle stopwatch |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 **409** | Cannot start a stopwatch again if it already exists |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7735,9 +7858,8 @@ Stop an issue's existing stopwatch.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -7814,6 +7936,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -7831,14 +7954,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | APIEmpty is an empty response |  -  |
 **403** | Not repo writer, user does not have rights to toggle stopwatch |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 **409** | Cannot stop a non existent stopwatch |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7857,9 +7981,8 @@ Get users who subscribed on an issue.
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.user import User
 from clientapi_forgejo.rest import ApiException
@@ -7941,6 +8064,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -7963,10 +8087,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | UserList |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7984,9 +8109,8 @@ List an issue's tracked times
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.models.tracked_time import TrackedTime
 from clientapi_forgejo.rest import ApiException
@@ -8071,6 +8195,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -8096,10 +8221,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | TrackedTimeList |  -  |
-**404** | APINotFound is a not found empty response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8117,9 +8243,8 @@ Moves the Pin to the given Position
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -8197,6 +8322,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -8215,14 +8341,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8240,9 +8367,8 @@ Pin an Issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -8319,6 +8445,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -8336,14 +8463,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8361,9 +8489,8 @@ Unpin an Issue
 * Api Key Authentication (AccessToken):
 * Api Key Authentication (SudoParam):
 * Api Key Authentication (Token):
+
 ```python
-import time
-import os
 import clientapi_forgejo
 from clientapi_forgejo.rest import ApiException
 from pprint import pprint
@@ -8440,6 +8567,7 @@ with clientapi_forgejo.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo | 
@@ -8457,14 +8585,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json, text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | APIEmpty is an empty response |  -  |
-**403** | APIForbiddenError is a forbidden error response |  * message -  <br>  * url -  <br>  |
-**404** | APINotFound is a not found empty response |  -  |
+**403** | APIForbiddenError is a forbidden error response |  -  |
+**404** | APINotFound is a not found error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

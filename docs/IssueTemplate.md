@@ -3,6 +3,7 @@
 IssueTemplate represents an issue template for a repository
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **str** |  | [optional] 
@@ -24,12 +25,12 @@ json = "{}"
 # create an instance of IssueTemplate from a JSON string
 issue_template_instance = IssueTemplate.from_json(json)
 # print the JSON string representation of the object
-print IssueTemplate.to_json()
+print(IssueTemplate.to_json())
 
 # convert the object into a dict
 issue_template_dict = issue_template_instance.to_dict()
 # create an instance of IssueTemplate from a dict
-issue_template_form_dict = issue_template.from_dict(issue_template_dict)
+issue_template_from_dict = IssueTemplate.from_dict(issue_template_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

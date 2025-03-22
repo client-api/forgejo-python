@@ -66,7 +66,7 @@ java -jar ./.openapi-generator/openapi-generator-cli.jar generate \
     --git-repo-id "forgejo-python" \
     --git-user-id "client-api" \
     --package-name "clientapi_forgejo" \
-    --additional-properties "packageName=clientapi_forgejo,packageUrl=https://github.com/client-api/forgejo-python,packageVersion=1.1.1,projectName=forgejo-python"
+    --additional-properties "packageName=clientapi_forgejo,packageUrl=https://github.com/client-api/forgejo-python,packageVersion=1.1.1,projectName=clientapi-forgejo"
 
 # Check if the command was successful
 if [ $? -eq 0 ]; then

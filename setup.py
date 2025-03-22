@@ -20,7 +20,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "forgejo-python"
+NAME = "clientapi-forgejo"
 VERSION = "1.1.1"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
